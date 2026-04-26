@@ -1,0 +1,29 @@
+{
+  "source": "https://saveweb2zip.com/en",
+  "exportedAt": "2026-04-26T18:32:09.514Z",
+  "totalFiles": 20,
+  "failedCount": 0,
+  "failedResources": [],
+  "fileList": [
+    "assets/fonts/garamondpremrpro-smbd-webfont.woff",
+    "assets/fonts/garamondpremrpro-smbd-webfont.woff2",
+    "assets/images/cssjavascript.png",
+    "assets/images/fonts.png",
+    "assets/images/html.png",
+    "assets/images/images.png",
+    "assets/images/logo-180.png",
+    "assets/images/logo.ico",
+    "assets/images/logo.png",
+    "assets/images/logo.svg",
+    "assets/images/main-backgound.png",
+    "assets/images/preloader.svg",
+    "assets/images/select-arrow.svg",
+    "assets/images/telegram-blue.svg",
+    "assets/images/telegram.svg",
+    "assets/images/white-logo.svg",
+    "assets/scripts.js",
+    "assets/styles.css",
+    "en.html",
+    "index.html"
+  ]
+}

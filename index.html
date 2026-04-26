@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Сервис для копирования сайтов. Бесплатно поможем скопировать сайт по https. Вы можете скопировать страницу сайта целиком, скачать и переделать под себя."/>
+    <meta name="keywords" content="скопировать сайт, скопировать сайт https, скопировать любой сайт по ссылке, скопировать html сайта, скопировать сайт целиком, скопировать лендинг, скачать сайт, сервис, онлайн, бесплатно"/>
+    <meta property="og:url" content="https://saveweb2zip.com/"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Скопировать Сайт Бесплатно Онлайн По Ссылке | SaveWeb2Zip"/>
+    <meta property="og:description" content="Сервис для копирования сайтов. Бесплатно поможем скопировать сайт по https. Вы можете скопировать страницу сайта целиком, скачать и переделать под себя."/>
+    <meta property="og:image" content="https://saveweb2zip.com/images/logo.svg"/>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/logo.png"/>
+    <link rel="shortcut icon" href="assets/images/logo.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo-180.png"/>
+    <title>Скопировать Сайт Бесплатно Онлайн По Ссылке | SaveWeb2Zip</title>
+    </head>
+    <body>
+      <div class="container page-wraper" id="app">
+        <header class="header row">
+          <div class="col-12 d-flex justify-content-between">
+            <h2 class="header-title">
+              <a class="header-title__link" href="/">
+              <img class="header-title__logo" src="assets/images/logo.svg" alt="Webpage2ZIP Logo" width="21.06" height="23.82"/>SaveWeb2ZIP</a>
+            </h2>
+            <select class="header-select" v-on:change="onChangeLang">
+              <option class="header-select__option" selected="selected" disabled="disabled" hidden="hidden">RU</option>
+                <option class="header-select__option" value="ru">RU Русский</option>
+                  <option class="header-select__option" value="en">EN English</option>
+                    <option class="header-select__option" value="es">ES Español</option>
+                    </select>
+                  </div>
+                </header>
+                <section class="row main">
+                  <div class="col-12">
+                    <h1 class="main-title">Скопировать сайт в ZIP архив</h1>
+                    </div>
+                    <div class="col-12">
+                      <form class="main-form" v-on:submit="submitForm">
+                        <div class="row">
+                          <div class="col-12 d-md-flex d-block mb-4">
+                            <input class="main-form__input" type="text" name="websiteLink" placeholder="Введите адрес сайта или страницы" required="required" v-model="formOptions.websiteLink" v-on:change="onChangeUrl"/>
+                            <button class="main-form__btn" type="submit" :class="{'main-form__btn-active' : isActiveRequest}" :disabled="isActiveRequest">
+                              <span class="main-form__btn-submit" :class="{'d-none' : isActiveRequest}">Скачать</span>
+                              <span class="main-form__btn-download" :class="{'d-none' : !isActiveRequest}" v-cloak="v-cloak">Загрузка {{downloadedFiles}} файлов</span>
+                            </button>
+                          </div>
+                          <div class="col-12 row">
+                            <div class="col-12 col-sm-6">
+                              <label class="main-form__checkbox mb-2 mb-md-0">
+                              <input type="checkbox" name="uniqualizeLand" v-model="formOptions.isLandUnique"/>Переименовать все файлы</label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                              <label class="main-form__checkbox mb-2 mb-md-0">
+                              <input type="checkbox" name="isAllPageDownload" v-model="formOptions.isMobileVersion"/>Скопировать мобильную версию сайта</label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                              <label class="main-form__checkbox mb-2 mb-md-0" id="tooltip">
+                              <input type="checkbox" name="isDefaultDownload" v-model="formOptions.isDefaultDownload"/>Альтернативное скачивание</label>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                              <label class="main-form__checkbox mb-2 mb-md-0" id="tooltipSaveStructure">
+                              <input type="checkbox" name="isSaveStructure" v-model="formOptions.isSaveStructure"/>Сохранить структуру сайта</label>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="col-12 col-lg-7 preferences">
+                      <h2 class="preferences-title">Копирование всех файлов сайта</h2>
+                        <p class="preferences-description">
+                          <i>Скопировать</i> сайт целиком, лендинг, либо нужную страницу абсолютно бесплатно. <i>Добавьте ссылку</i> вашего сайта в строку и нажмите на кнопку <i>«Скачать»</i> для получения архива со всеми файлами.</p>
+                          <ul class="preferences-list">
+                            <li class="preferences-list__item">
+                              <img class="preferences-list__img" src="assets/images/html.png" alt="HTML Logo" width="68.29" height="78"/>
+                              <h5 class="preferences-list__paragraph">Html</h5>
+                              </li>
+                              <li class="preferences-list__item">
+                                <img class="preferences-list__img" src="assets/images/cssjavascript.png" alt="CSS &amp; JavaScript Logo" width="67.41" height="78"/>
+                                <h5 class="preferences-list__paragraph">CSS &amp; JavaScript</h5>
+                                </li>
+                                <li class="preferences-list__item">
+                                  <img class="preferences-list__img" src="assets/images/images.png" alt="Images Logo" width="79.04" height="58.41"/>
+                                  <h5 class="preferences-list__paragraph">Images</h5>
+                                  </li>
+                                  <li class="preferences-list__item">
+                                    <img class="preferences-list__img" src="assets/images/fonts.png" alt="Fonts Logo" width="67" height="67"/>
+                                    <h5 class="preferences-list__paragraph">Fonts</h5>
+                                    </li>
+                                  </ul>
+                                  <div class="col-12 contacts">
+                                    <a class="contacts__link" href="https://telegram.me/webtozip_bot" target="_blank">
+                                    <img class="contacts__img" src="assets/images/telegram.svg" alt="Telegram Logo" width="20" height="20"/>Скачать любой сайт с помощью бота - @webtozip_bot</a>
+                                  </div>
+                                </div>
+                                <div class="background-image-main">
+                                </div>
+                              </section>
+                              <transition name="slide-fade">
+                                <div class="popup" v-if="isPopupActive" v-cloak="v-cloak">
+                                  <div class="container row">
+                                    <div class="col-12 popup-header">
+                                      <a class="header-title popup-title" href="./">
+                                      <img class="header-title__logo popup-title__logo" src="assets/images/white-logo.svg" alt="Webpage2ZIP Logo" width="21.06" height="23.82"/>SaveWeb2ZIP</a>
+                                    </div>
+                                    <div class="col-12 col-lg-8">
+                                      <h3 class="popup-success-title">{{ popupTitle }}</h3>
+                                        <div>
+                                          <p class="popup-success-paragraph" v-if="popupType === 'downloadSuccess'">Помогли тебе скачать сайт? <span class="popup-success-paragraph__span">Нажми ctrl+d</span>,<br> чтобы добавить сервис в закладки <br>и не потерять нас.</p>
+                                            <div class="popup-links">
+                                              <a class="popup-links__donat" href="" v-on:click="closePopup">Закрыть</a>
+                                            </div>
+                                            <a class="contacts__link popup-links__telegram" href="https://telegram.me/webtozip_bot" target="_blank">
+                                            <img class="contacts__img" src="assets/images/telegram-blue.svg" alt="Telegram Logo" width="20" height="20"/>Скачать любой сайт с помощью бота - @webtozip_bot</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </transition>
+                                  <div class="overlay" v-if="isPopupActive" v-on:click="closePopup" v-cloak="v-cloak">
+                                  </div>
+                                </div>
+                                <script>window.incorrectLink = `Что-то не так со ссылкой :( Попробуйте скопировать ссылку из строки браузера`;
+window.popupSuccessTitle = `Сайт подготовлен к загрузке!`;
+window.popupFormTitle = `Выбери необходимые настройки:`;
+window.popupDeclineTitle = `Что-то пошло не так :(`;
+window.isDefaultDownloadTitle = `Если вы не смогли скопировать сайт стандартным способом. Включите галочку, чтобы попробовать скачать сайт другим алгоритмом.`;
+window.isSaveStructureTitle = `Скопировать сайт с сохранением оригинальной структуры папок ресурсов сайта.`;
+window.errors = {"dns_not_resolved":"Сайт недоступен","url_is_empty":"Адрес сайта не может быть пустым","url_is_not_valid":"Адрес сайта некорректный","protocol_is_not_valid":"Поддерживаются только протоколы http и https","localhost_is_not_supported":"Скачивание локальных сайтов не поддерживается","too_many_attempts":"Слишком много попыток копирования этого сайта","not_found":"Сайт не найден","website_copy_is_not_available":"Сайт недоступен для предпросмотра","something_went_wrong_while_copying":"Произошла внутренняя ошибка при копировании сайта","site_access_error":"Ошибка доступа к сайту с нашего сервера","website_size_is_too_large_for_downloading_in_few_minutes":"Cайт слишком большой для копирования за 180 секунд","wrong_captcha":"Вы не прошли проверку на робота"};</script>
+                                  <script src="assets/scripts.js">
+</script>
+                                  </body>
+                                </html>
